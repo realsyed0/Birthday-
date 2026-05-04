@@ -5,36 +5,119 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Happy Birthday Fida 💖</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&family=Pacifico&family=Noto+Color+Emoji" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&family=Pacifico&display=swap" rel="stylesheet">
 
 <style>
 body {
-    margin: 0;
-    font-family: 'Poppins','Segoe UI Emoji','Noto Color Emoji',sans-serif;
-    background: linear-gradient(135deg, #ff9ec4, #ffc1cc, #ffd6e0);
-    color: white;
-    text-align: center;
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #ff9ec4, #ffc1cc, #ffd6e0);
+  color: white;
+  text-align: center;
 }
 
+/* Card */
 .card {
-    background: rgba(255,255,255,0.2);
-    backdrop-filter: blur(12px);
-    border-radius: 20px;
-    padding: 20px;
-    margin: 20px auto;
-    max-width: 360px;
+  background: rgba(255,255,255,0.2);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 350px;
 }
 
+/* Title */
 h1 {
-    font-family: 'Pacifico', cursive;
+  font-family: 'Pacifico', cursive;
 }
 
+/* Images */
 .gallery img {
-    width: 120px;
-    height: 120px;
-    border-radius: 15px;
-    margin: 8px;
-    object-fit: cover;
+  width: 120px;
+  height: 120px;
+  border-radius: 15px;
+  margin: 8px;
+  object-fit: cover;
+}
+
+/* Buttons */
+button {
+  padding: 10px 18px;
+  border: none;
+  border-radius: 20px;
+  margin: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.btn1 { background: #ffe0ec; color: #ff4b8b; }
+.btn2 { background: #f3d1ff; color: #9d4edd; }
+.btn3 { background: #ffd6e0; color: #ff6f91; }
+
+.disabled {
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+/* Wish hidden */
+#wish {
+  display: none;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+  <h1>🎂 Happy Birthday 🎀</h1>
+  <h2>Fida Chand (sissy) 💖</h2>
+</div>
+
+<div class="card gallery">
+  <img src="img1.jpg">
+  <img src="img2.jpg">
+</div>
+
+<div class="card">
+  <p>1. Smile right now 😊</p>
+  <button class="btn1" onclick="done(0)">Done</button>
+
+  <p>2. Think about happy memory 💭</p>
+  <button class="btn2" onclick="done(1)">Done</button>
+
+  <p>3. Stay happy always 💕</p>
+  <button class="btn3" onclick="done(2)">Done</button>
+
+  <br>
+  <button id="unlock" class="disabled" onclick="showWish()">Unlock 🎁</button>
+</div>
+
+<div class="card" id="wish">
+  <p>
+  Happy birthday 🎂🎈💐 sister,<br><br>
+  You are so special in my life 💖<br><br>
+  Without you I would not have made it this far ✨<br><br>
+  May your life be full of love and prosperity 💕
+  </p>
+</div>
+
+<script>
+let tasks = [false, false, false];
+
+function done(i) {
+  tasks[i] = true;
+  if (tasks[0] && tasks[1] && tasks[2]) {
+    document.getElementById("unlock").classList.remove("disabled");
+  }
+}
+
+function showWish() {
+  document.getElementById("wish").style.display = "block";
+}
+</script>
+
+</body>
+</html>    object-fit: cover;
 }
 
 button {
