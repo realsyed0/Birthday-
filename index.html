@@ -109,6 +109,81 @@ function showWish(){
 </script>
 
 </body>
+</html>    object-fit: cover;
+}
+
+button {
+    padding: 10px 18px;
+    border-radius: 20px;
+    border: none;
+    margin: 8px;
+}
+
+.btn1 { background: #ffe0ec; color: #ff4b8b; }
+.btn2 { background: #f3d1ff; color: #9d4edd; }
+.btn3 { background: #ffd6e0; color: #ff6f91; }
+
+.disabled {
+    opacity: 0.4;
+    pointer-events: none;
+}
+
+#wish {
+    display: none;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+    <h1>🎂 Happy Birthday 🎀</h1>
+    <h2>Fida Chand (sissy) 💖</h2>
+</div>
+
+<div class="card gallery">
+    <img src="img1.jpg">
+    <img src="img2.jpg">
+</div>
+
+<div class="card">
+    <p>1. Smile 😊</p>
+    <button class="btn1" onclick="done(0)">Done</button>
+
+    <p>2. Think happy 💭</p>
+    <button class="btn2" onclick="done(1)">Done</button>
+
+    <p>3. Stay happy 💕</p>
+    <button class="btn3" onclick="done(2)">Done</button>
+
+    <br>
+    <button id="unlock" class="disabled" onclick="showWish()">Unlock 🎁</button>
+</div>
+
+<div class="card" id="wish">
+    <p>
+    Happy birthday 🎂🎈💐 sister,<br><br>
+    You are so special in my life 💖<br><br>
+    May your life be full of love and prosperity 💕
+    </p>
+</div>
+
+<script>
+let t=[0,0,0];
+
+function done(i){
+ t[i]=1;
+ if(t.every(v=>v)){
+  document.getElementById("unlock").classList.remove("disabled");
+ }
+}
+
+function showWish(){
+ document.getElementById("wish").style.display="block";
+}
+</script>
+
+</body>
 </html>    backdrop-filter: blur(12px);
     border-radius: 20px;
     padding: 20px;
