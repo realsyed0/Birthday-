@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Fida </title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&family=Pacifico&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #ff9ec4, #ffc1cc, #ffd6e0);
+    overflow-x: hidden;
+    color: white;
+}
+
+/* Glow */
+body::before {
+    content: "";
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.3), transparent);
+}
+
+/* Card */
+.card {
+    background: rgba(255,255,255,0.2);
+    backdrop-filter: blur(15px);
+    border-radius: 25px;
+    padding: 25px;
+    margin: 25px auto;
+    max-width: 360px;
+    text-align: center;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+    animation: fadeUp 1s ease;
+}
+
+h1 {
+    font-family: 'Pacifico', cursive;
+    font-size: 2.6rem;
+}
+
+/* Gallery */
+.gallery {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.gallery img {
+    width: 130px;
+    height: 130px;
+    border-radius: 20px;
+    margin: 10px;
+    object-fit: cover;
+    transition: 0.4s;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+}
+
+.gallery img:hover {
+    transform: scale(1.1) rotate(2deg);
+}
+
+/* Buttons */
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 25px;
+    margin: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn1 { background: #ffe0ec; color: #ff4b8b; }
+.btn2 { background: #f3d1ff; color: #9d4edd; }
+.btn3 { background: #ffd6e0; color: #ff6f91; }
+
+button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px white;
+}
+
+.disabled {
+    opacity: 0.4;
+    pointer-events: none;
+}
+
+/* Glow unlock */
+#unlock {
+    animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+    from { box-shadow: 0 0 5px white; }
+    to { box-shadow: 0 0 20px white; }
+}
+
+/* Wish */
+#wish {
+    opacity: 0;
+    transform: scale(0.85);
+    transition: 0.8s;
+}
+
+#wish.show {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Text spacing */
+#wish p {
+    line-height: 1.6;
+}
+
+/* Animations */
+@keyframes fadeUp {
+    from {opacity: 0; transform: translateY(20px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+
+/* Hearts */
+.heart {
+    position: fixed;
+    bottom: -10px;
+    font-size: 18px;
+    animation: floatUp 6s linear infinite;
+}
+
+@keyframes floatUp {
+    to { transform: translateY(-100vh); opacity: 0; }
+}
+
+/* Sparkles */
+.sparkle {
+    position: fixed;
+    width: 6px;
+    height: 6px;
+    background: white;
+    border-radius: 50%;
+    opacity: 0.7;
+    animation: sparkleMove 4s linear infinite;
+}
+
+@keyframes sparkleMove {
+    to { transform: translateY(-100vh); opacity: 0; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+    <h1> Happy Birthday </h1>
+    <h2>Fida Chand (sissy) </h2>
+    <p>You make everything more beautiful </p>
+</div>
+
+<div class="card gallery">
+    <img src="img1.jpg">
+    <img src="img2.jpg">
+</div>
+
+<div class="card">
+    <h2> Complete the tasks</h2>
+
+    <p>1. Smile right now </p>
+    <button class="btn1" onclick="done(0)">Done </button>
+
+    <p>2. Think of your happiest moment </p>
+    <button class="btn2" onclick="done(1)">Done </button>
+
+    <p>3. Promise to always stay happy </p>
+    <button class="btn3" onclick="done(2)">Done </button>
+
+    <br>
+    <button id="unlock" class="disabled" onclick="showWish()">Unlock Surprise </button>
+</div>
+
+<div class="card" id="wish">
+    <h2> Birthday Wish</h2>
+    <p>
+    Happy birthday  sister,<br><br>
+    You are so special in my life, not only for being my lovely sister,  
+    but also for being one of my best friends <br><br>
+    Without you, I would not have made it this far <br><br>
+    Dear sissy, I wish you all the best on your big day and every day <br><br>
+    May your life be full of love and prosperity 
+    </p>
+</div>
+
+<script>
+let tasks = [false,false,false];
+
+function done(i){
+    tasks[i]=true;
+    if(tasks.every(t=>t)){
+        document.getElementById("unlock").classList.remove("disabled");
+    }
+}
+
+function showWish(){
+    document.getElementById("wish").classList.add("show");
+}
+
+/* Hearts */
+setInterval(()=>{
+    let h=document.createElement("div");
+    h.className="heart";
+    h.innerHTML="";
+    h.style.left=Math.random()*100+"vw";
+    document.body.appendChild(h);
+    setTimeout(()=>h.remove(),6000);
+},300);
+
+/* Sparkles */
+setInterval(()=>{
+    let s=document.createElement("div");
+    s.className="sparkle";
+    s.style.left=Math.random()*100+"vw";
+    document.body.appendChild(s);
+    setTimeout(()=>s.remove(),4000);
+},200);
+</script>
+
+</body>
+</html>
